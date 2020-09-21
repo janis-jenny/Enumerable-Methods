@@ -14,6 +14,21 @@ module Enumerable
     else 
       to_enum(:my_each)
     end  
-  end    
+  end
+
+# 2.my_each_index 
+  def my_each_with_index
+    #return to_enum(:my_each_index) unless block_given?
+    if block_given?
+      a = 0
+      while a < self.length
+        yield(self[a], a)
+        a += 1
+      end
+      self 
+    else 
+      to_enum(:my_each_with_index)
+    end  
+  end
 end
 
