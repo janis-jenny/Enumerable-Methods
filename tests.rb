@@ -15,9 +15,9 @@ puts '3.--------my_select--------'
 newArr = (%w[Sharon Leo Leila Brian Arun].my_select { |friend| friend != 'Brian' })
 puts newArr
 
-puts '4.--------mu_all--------'
-puts %w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 3 }
-puts %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 3 }
+puts '4.--------my_all--------'
+puts %w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 4 }
+puts %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 4 }
 
 puts '5.--------my_any--------'
 puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 3 }) #=> true

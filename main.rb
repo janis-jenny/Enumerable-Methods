@@ -44,7 +44,16 @@ module Enumerable
   # 4.my_all?
   def my_all?
     if block_given?
-      yield(self)
+      a = 0
+      o = true
+      while a < self.length
+        if  yield(self[a]) == false
+          o = false
+          break
+        end
+        a += 1
+      end
+      return o
     else
       return true
     end
