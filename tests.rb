@@ -16,8 +16,8 @@ newArr = (%w[Sharon Leo Leila Brian Arun].my_select { |friend| friend != 'Brian'
 puts newArr
 
 puts '4.--------my_all--------'
-puts %w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 4 }
-puts %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 4 }
+puts %w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 3 }
+puts %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 3 }
 
 puts '5.--------my_any--------'
 puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 3 }) #=> true
@@ -34,3 +34,7 @@ puts arr.my_count(2) #=> 2
 puts arr.my_count(2) { |x| (x % 2).zero? } #=> 3
 puts [nil, nil, nil, 2, 4].count(nil)
 puts [nil, nil, nil, 2, 4].my_count(nil)
+
+puts '8.--------my_inject--------'
+puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n } )
+puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].inject { |sum, n| sum + n } )

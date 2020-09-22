@@ -89,15 +89,26 @@ module Enumerable
   # 7.my_count
   def my_count (*value)
     count = 0
-  if block_given?
-    my_each {|item| count += 1 if yield(item)}
-  elsif !value.empty? #when value are given or when the array is not empty
-    my_each {|item| count += 1 if item == value[0]}
-  else   #when there is no value but is nil  and no block
-    my_each {|item| count += 1}
-  end
+    if block_given?
+      my_each {|item| count += 1 if yield(item)}
+    elsif !value.empty? #when value are given or when the array is not empty
+      my_each {|item| count += 1 if item == value[0]}
+    else   #when there is no value but is nil  and no block
+      my_each {|item| count += 1}
+    end
   count
-end
+  end
+
+  def my_inject
+    a = 0
+    x = 0
+    sum = 0
+    while a < self.length
+      sum = yield(sum, self[a])
+      a += 1
+    end
+    return sum
+  end
 end
 
 #arr = [1, 2, 4, 2] #test array
