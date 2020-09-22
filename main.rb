@@ -15,7 +15,7 @@ module Enumerable
       to_enum(:my_each)
     end  
   end
-
+  
 # 2.my_each_index 
   def my_each_with_index
     #return to_enum(:my_each_index) unless block_given?
@@ -30,5 +30,15 @@ module Enumerable
       to_enum(:my_each_with_index)
     end  
   end
+
+# 2.my_select
+  def my_select
+    #return to_enum(:my_each_index) unless block_given?
+    if block_given?
+      newArr = []
+      self.my_each {|item| newArr << item if yield(item)}
+      newArr
+    end 
+  end  
 end
 
