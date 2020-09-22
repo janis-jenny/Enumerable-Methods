@@ -58,4 +58,22 @@ module Enumerable
       return true
     end
   end
+
+  def my_none?
+    if block_given?
+      a = 0
+      while a < self.length
+        if yield(self[a]) == true
+          o = false
+          break
+        else
+          a += 1
+          o = true
+        end
+      end
+      return o
+    else
+      return true
+    end
+  end
 end

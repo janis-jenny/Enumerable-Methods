@@ -22,3 +22,7 @@ puts %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 3 }
 puts '5.--------my_any--------'
 puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 3 }) #=> true
 puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 4 }) #=> true
+
+puts '6.--------my_none?--------'
+puts %w{ant bear cat}.my_none? { |word| word.length == 5 }
+puts %w{ant bear cat}.none? { |word| word.length == 5 }
