@@ -102,12 +102,17 @@ module Enumerable
   def my_inject
     a = 0
     x = 0
-    sum = 0
+    sum = self[a]
+    a = 1
     while a < self.length
       sum = yield(sum, self[a])
       a += 1
     end
     return sum
+  end
+
+  def multiply_els
+    self.my_inject {|sum, n| sum * n}
   end
 end
 

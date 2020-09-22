@@ -38,3 +38,4 @@ puts [nil, nil, nil, 2, 4].my_count(nil)
 puts '8.--------my_inject--------'
 puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n } )
 puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].inject { |sum, n| sum + n } )
+puts ([2,4,5].multiply_els)
