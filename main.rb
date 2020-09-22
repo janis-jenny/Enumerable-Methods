@@ -10,13 +10,13 @@ module Enumerable
         yield self[a]
         a += 1
       end
-      self 
-    else 
+      self
+    else
       to_enum(:my_each)
-    end  
+    end
   end
-  
-# 2.my_each_index 
+
+# 2.my_each_index
   def my_each_with_index
     #return to_enum(:my_each_index) unless block_given?
     if block_given?
@@ -25,10 +25,10 @@ module Enumerable
         yield(self[a], a)
         a += 1
       end
-      self 
-    else 
+      self
+    else
       to_enum(:my_each_with_index)
-    end  
+    end
   end
 
 # 2.my_select
@@ -38,7 +38,15 @@ module Enumerable
       newArr = []
       self.my_each {|item| newArr << item if yield(item)}
       newArr
-    end 
-  end  
-end
+    end
+  end
 
+  # 4.my_all?
+  def my_all?
+    if block_given?
+      yield(self)
+    else
+      return true
+    end
+  end
+end
