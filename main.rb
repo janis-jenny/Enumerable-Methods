@@ -116,6 +116,18 @@ module Enumerable
   end
 end
 
+def my_map(value = nil)
+  if block_given?
+    newArr = []
+    if value.nil?
+      my_each { |item| newArr << yield(item) }
+    else
+      my_each { |item| newArr << value.call(item)}
+    end
+    newArr
+  end 
+end
+
 #arr = [1, 2, 4, 2] #test array
 #puts arr.my_count #=> 4
 #puts arr.my_count(2, 4, 1)
