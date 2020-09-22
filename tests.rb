@@ -18,3 +18,7 @@ puts newArr
 puts '4.--------mu_all--------'
 puts %w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 3 }
 puts %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 3 }
+
+puts '5.--------my_any--------'
+puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 3 }) #=> true
+puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 4 }) #=> true

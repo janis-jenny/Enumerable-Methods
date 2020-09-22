@@ -49,4 +49,13 @@ module Enumerable
       return true
     end
   end
+
+  # 4.my_any?
+  def my_any?
+    if block_given?
+      yield(self)
+    else
+      return true
+    end
+  end
 end
