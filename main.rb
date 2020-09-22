@@ -91,6 +91,6 @@ module Enumerable
 end
 end
 
-arr = [1, 2, 4, 2] #test array
+#arr = [1, 2, 4, 2] #test array
 #puts arr.my_count #=> 4
-puts arr.my_count(2, 4, 1)
+#puts arr.my_count(2, 4, 1)
