@@ -39,3 +39,8 @@ puts '8.--------my_inject--------'
 puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n } )
 puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].inject { |sum, n| sum + n } )
 puts ([2,4,5].multiply_els)
+
+puts '8.--------my_maps--------'
+r = [1, 2, 3]
+puts (r.map { |i| i * i } )
+puts (r.my_map { |i| i * i })

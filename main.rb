@@ -114,18 +114,18 @@ module Enumerable
   def multiply_els
     self.my_inject {|sum, n| sum * n}
   end
-end
 
-def my_map(value = nil)
-  if block_given?
-    newArr = []
-    if value.nil?
-      my_each { |item| newArr << yield(item) }
-    else
-      my_each { |item| newArr << value.call(item)}
+  def my_map
+    a = 0
+    arr1 = []
+    while a < self.length
+      sum = yield(self[a])
+      arr1[a] = sum
+      sum = 0
+      a += 1
     end
-    newArr
-  end 
+    return arr1
+  end
 end
 
 #arr = [1, 2, 4, 2] #test array
