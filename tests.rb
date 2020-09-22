@@ -26,3 +26,11 @@ puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 4 }) #=> t
 puts '6.--------my_none?--------'
 puts %w{ant bear cat}.my_none? { |word| word.length == 5 }
 puts %w{ant bear cat}.none? { |word| word.length == 5 }
+
+puts '7.--------my_count--------'
+arr = [1, 2, 4, 2]
+puts arr.my_count #=> 4
+puts arr.my_count(2) #=> 2
+puts arr.my_count(2) { |x| (x % 2).zero? } #=> 3
+puts [nil, nil, nil, 2, 4].count(nil)
+puts [nil, nil, nil, 2, 4].my_count(nil)

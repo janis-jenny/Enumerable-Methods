@@ -76,4 +76,21 @@ module Enumerable
       return true
     end
   end
+
+  # 7.my_count
+  def my_count (*value)
+    count = 0
+  if block_given?
+    my_each {|item| count += 1 if yield(item)}
+  elsif !value.empty? #when value are given or when the array is not empty
+    my_each {|item| count += 1 if item == value[0]}
+  else   #when there is no value but is nil  and no block
+    my_each {|item| count += 1}
+  end
+  count
 end
+end
+
+arr = [1, 2, 4, 2] #test array
+#puts arr.my_count #=> 4
+puts arr.my_count(2, 4, 1)
