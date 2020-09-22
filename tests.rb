@@ -44,3 +44,7 @@ puts '8.--------my_maps--------'
 r = [1, 2, 3]
 puts (r.map { |i| i * i } )
 puts (r.my_map { |i| i * i })
+
+puts 'my_map_proc'
+my_proc = proc { |i| i * i }
+(1..5).my_map(my_proc) { |i| i + i }

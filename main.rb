@@ -100,12 +100,10 @@ module Enumerable
   end
 
   def my_inject
-    a = 0
-    x = 0
-    sum = self[a]
-    a = 1
+    sum = self[0]
+    a = 1 #
     while a < self.length
-      sum = yield(sum, self[a])
+      sum = yield(sum, self[0])
       a += 1
     end
     return sum
@@ -126,6 +124,19 @@ module Enumerable
     end
     return arr1
   end
+
+  def my_map_proc
+    if block_given? || proc
+     newArr = []
+      if proc
+        my_each { |item| newArr << proc.call(item) }
+      else
+        my_each { |item| newArr << yield(item) }
+      end
+      newArr
+    end
+  end
+
 end
 
 #arr = [1, 2, 4, 2] #test array
