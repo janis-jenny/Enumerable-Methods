@@ -50,6 +50,4 @@ puts '10.--------my_map_proc--------'
 my_proc = proc { |i| i * i }
 print [1, 2, 7, 4, 5].my_map { |x| x * x }
 print "\n"
-#puts "My_Map method which takes proc as an argument"
-#print [1, 2, 7, 4, 5].my_map(my_proc)
-#print "\n"
+

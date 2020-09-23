@@ -5,7 +5,7 @@ module Enumerable
   def my_each
     #return to_enum(:my_each) unless block_given?
     if block_given?
-      a = 0
+      a = 0A
       while a < self.length
         yield self[a]
         a += 1
@@ -102,9 +102,9 @@ module Enumerable
   # 8.my_inject
   def my_inject
     sum = self[0]
-    a = 1 #?
+    a = 1 
     while a < self.length
-      sum = yield(sum, self[0])
+      sum = yield(sum, self[1])
       a += 1
     end
     return sum
@@ -114,6 +114,7 @@ module Enumerable
     self.my_inject {|sum, n| sum * n}
   end
 
+  # 9.my_map
   def my_map
     a = 0
     arr1 = []
@@ -126,6 +127,7 @@ module Enumerable
     return arr1
   end
 
+  # 10.my_map_proc
   def my_map_proc
     if block_given? || proc
      newArr = []
@@ -140,6 +142,4 @@ module Enumerable
 
 end
 
-#arr = [1, 2, 4, 2] #test array
-#puts arr.my_count #=> 4
-#puts arr.my_count(2, 4, 1)
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
