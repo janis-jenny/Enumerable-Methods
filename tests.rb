@@ -20,8 +20,8 @@ puts %w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 3 }
 puts %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 3 }
 
 puts '5.--------my_any--------'
-puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 3 }) #=> true
-puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 4 }) #=> true
+puts (%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 3 }) 
+puts (%w[Sharon Leo Leila Brian Arun].any? { |word| word.length >= 4 }) 
 
 puts '6.--------my_none?--------'
 puts %w{ant bear cat}.my_none? { |word| word.length == 5 }
@@ -40,11 +40,16 @@ puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n } )
 puts ([1, 2, 3, 4, 5, 6, 7, 8, 9].inject { |sum, n| sum + n } )
 puts ([2,4,5].multiply_els)
 
-puts '8.--------my_maps--------'
+puts '9.--------my_map--------'
 r = [1, 2, 3]
-puts (r.map { |i| i * i } )
-puts (r.my_map { |i| i * i })
+print (r.map { |i| i * i })
+print "\n"
+print (r.my_map { |i| i * i })
 
-puts 'my_map_proc'
+puts '10.--------my_map_proc--------'
 my_proc = proc { |i| i * i }
-(1..5).my_map(my_proc) { |i| i + i }
+print [1, 2, 7, 4, 5].my_map { |x| x * x }
+print "\n"
+puts "My_Map method which takes proc as an argument"
+print [1, 2, 7, 4, 5].my_map(my_proc)
+print "\n"

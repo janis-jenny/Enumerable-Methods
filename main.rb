@@ -93,15 +93,16 @@ module Enumerable
       my_each {|item| count += 1 if yield(item)}
     elsif !value.empty? #when value are given or when the array is not empty
       my_each {|item| count += 1 if item == value[0]}
-    else   #when there is no value but is nil  and no block
+    else   #when there is no value but is nil and there is no block
       my_each {|item| count += 1}
     end
   count
   end
 
+  # 8.my_inject
   def my_inject
     sum = self[0]
-    a = 1 #
+    a = 1 #?
     while a < self.length
       sum = yield(sum, self[0])
       a += 1
