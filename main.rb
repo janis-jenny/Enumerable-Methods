@@ -5,7 +5,7 @@ module Enumerable
   def my_each
     #return to_enum(:my_each) unless block_given?
     if block_given?
-      a = 0A
+      a = 0
       while a < self.length
         yield self[a]
         a += 1
@@ -102,9 +102,9 @@ module Enumerable
   # 8.my_inject
   def my_inject
     sum = self[0]
-    a = 1 
+    a = 1
     while a < self.length
-      sum = yield(sum, self[1])
+      sum = yield(sum, self[a])
       a += 1
     end
     return sum
@@ -141,5 +141,3 @@ module Enumerable
   end
 
 end
-
-# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/ModuleLength
