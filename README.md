@@ -11,7 +11,7 @@
 - [#my_any?](https://github.com/janis-jenny/Enumerable-Methods/blob/feature/main.rb)
 - [#my_none?](https://github.com/janis-jenny/Enumerable-Methods/blob/feature/main.rb)
 - [#my_count](https://github.com/janis-jenny/Enumerable-Methods/blob/feature/main.rb)
-- [#my_map](https://github.com/janis-jenny/Enumerable-Methods/blob/feature/main.rb)(it also accepts proc)
+- [#my_map](https://github.com/janis-jenny/Enumerable-Methods/blob/feature/main.rb) (it also accepts proc)
 - [#my_inject](https://github.com/janis-jenny/Enumerable-Methods/blob/feature/main.rb)
 
 At the same time we added #muptiply_els which multiplies all the elements of the array together by using #my_inject .
@@ -34,8 +34,8 @@ At the same time we added #muptiply_els which multiplies all the elements of the
 
 👤 **Mauricio Tavile**
 
-- Github: [@janis-jenny](https://github.com/Nexch)
-- Twitter: [@janis_jenny](https://twitter.com/MfinchT)
+- Github: [@nexch](https://github.com/Nexch)
+- Twitter: [@MfinchT](https://twitter.com/MfinchT)
 - Linkedin: [linkedin](https://www.linkedin.com/in/Nexch/)
 
 ## 🤝 Contributing

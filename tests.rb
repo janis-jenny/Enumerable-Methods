@@ -6,10 +6,14 @@ puts '1.--------my_each--------'
 
 p %w[Sharon Leo Leila Brian Arun].my_each
 p %w[Sharon Leo Leila Brian Arun].each
+p (1..3).each { |friend| puts friend }
+p (1..3).my_each { |friend| puts friend }
 
 puts '2.--------my_each_with_index--------'
 %w[Sharon Leo Leila Brian Arun].my_each_with_index { |friend, index| print "#{friend} #{index} \n" }
 %w[Sharon Leo Leila Brian Arun].each_with_index { |friend, index| print "#{friend} #{index} \n" }
+p (1..3).each_with_index { |friend| puts friend }
+p (1..3).my_each_with_index { |friend| puts friend }
 
 puts '3.--------my_select--------'
 NEW_ARR = (%w[Sharon Leo Leila Brian Arun].my_select { |friend| friend != 'Brian' })

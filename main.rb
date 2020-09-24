@@ -6,8 +6,8 @@ module Enumerable
     # return to_enum(:my_each) unless block_given?
     if block_given?
       a = 0
-      while a < length
-        yield self[a]
+      while a < to_a.length
+        yield to_a[a]
         a += 1
       end
       self
@@ -21,8 +21,8 @@ module Enumerable
     # return to_enum(:my_each_index) unless block_given?
     if block_given?
       a = 0
-      while a < length
-        yield(self[a], a)
+      while a < to_a.length
+        yield(to_a[a], a)
         a += 1
       end
       self
@@ -36,8 +36,11 @@ module Enumerable
     # return to_enum(:my_each_index) unless block_given?
     if block_given?
       new_arr = []
-      my_each { |item| new_arr << item if yield(item) }
+      to_a.my_each { |item| new_arr << item if yield(item) }
       new_arr
+    end
+    else
+      to_enum(:my_each_with_index)
     end
   end
 
@@ -142,3 +145,4 @@ module Enumerable
 end
 
 # rubocop:enable Metrics/ModuleLength, Style/GuardClause
+
