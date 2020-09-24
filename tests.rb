@@ -20,11 +20,20 @@ NEW_ARR = (%w[Sharon Leo Leila Brian Arun].my_select { |friend| friend != 'Brian
 puts NEW_ARR
 
 puts '4.--------my_all--------'
-puts((1..3).all?(&proc{|x| x%2==0}) == (1..3).my_all?(&proc{|x| x%2==0}))
-puts([true,[true],false].all? == [true,[true],false].my_all?)
-puts([1,2,3].all?(Integer) == [1,2,3].my_all?(Integer))
-puts [1,-2,3.4].all?(Numeric) == [1,-2,3.4].my_all?(Numeric)
-puts(['word',1,2,3].all?(Integer) == ['word',1,2,3].my_all?(Integer))
+puts(%w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 3} == %w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 3})
+puts(%w[ant bear cat].my_all?(/t/) == %w[ant bear cat].my_all?(/t/))
+puts([1,2,3].my_all?(Float) == [1,2,3].all?(Float))
+puts("4. #{[nil, true, 99].my_all? == [nil, true, 99].all?}")
+puts("5. #{[].my_all? == [].all?}")
+puts("6. #{[true, true, true].my_all? == [true, true, true].all?}")
+puts("7. #{[false, false, false].my_all? == [false, false, false].all?}")
+puts("8. #{[true, [true], true].my_all? == [true, [true], true].all?}")
+puts("9. #{[1,-2,3.4].all?(Numeric) == [1,-2,3.4].my_all?(Numeric)}")
+puts("10. #{['word',1,2,3].all?(Integer) == ['word',1,2,3].my_all?(Integer)}")
+puts("11. #{['cat' 'cat'].my_all?(/t/) == ['cat' 'cat'].my_all?(/t/)}")
+puts("12. #{['cat' 'cat'].my_all?(/a/) == ['cat' 'cat'].my_all?(/a/)}")
+puts("13. #{[5,5,5].all?(5) == [5,5,5].my_all?(5)}")
+puts("14. #{[5,[5],5].all?(5) == [5,[5],5].my_all?(5)}")
 
 puts '5.--------my_any--------'
 puts([1,2,3].any?(&proc{|x| x%2==0}) == [1,2,3].my_any?(&proc{|x| x%2==0}))
