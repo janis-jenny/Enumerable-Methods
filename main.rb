@@ -38,19 +38,32 @@ module Enumerable
       new_arr = []
       to_a.my_each { |item| new_arr << item if yield(item) }
       new_arr
-    end
     else
       to_enum(:my_each_with_index)
     end
   end
 
   # 4.my_all?
-  def my_all?
+  def my_all?(arg = nil)
+    a = 0
+    o = true
+    my = self.to_a
     if block_given?
-      a = 0
+      while a < my.length
+        if yield(my[a]) == false
+          o = false
+          break
+        end
+        a += 1
+      end
+      o
+    elsif arg == nil
+      o = false
+      o
+    elsif block_given? == false && arg != nil
       o = true
-      while a < length
-        if yield(self[a]) == false
+      while a < my.length
+        if (my[a].is_a? arg) == false
           o = false
           break
         end
@@ -63,9 +76,54 @@ module Enumerable
   end
 
   # 4.my_any?
-  def my_any?
+  def my_any?(arg = nil)
+    a = 0
+    o = false
+    my = self.to_a
     if block_given?
-      yield(self)
+      while a < my.length
+        if yield(my[a]) == true
+          o = true
+          break
+        end
+        a += 1
+      end
+      o
+    elsif arg == nil
+      o = true
+      o
+    elsif block_given? == true && arg != nil
+      o = false
+      while a < my.length
+        if (my[a].is_a? arg) == true
+          o = true
+          break
+        end
+        a += 1
+      end
+      o
+    elsif arg.class == Regexp
+      while a < my.length
+        if (my[a].match(arg) != nil)
+          o = true
+          break
+        else
+          o = false
+        end
+        a += 1
+      end
+      o
+    elsif arg.class != Regexp && arg.class == String
+      while a < my.length
+        if my[a] == arg
+          o = true
+          break
+        else
+          o = false
+        end
+        a += 1
+      end
+      o
     else
       true
     end
@@ -145,4 +203,3 @@ module Enumerable
 end
 
 # rubocop:enable Metrics/ModuleLength, Style/GuardClause
-

@@ -20,12 +20,23 @@ NEW_ARR = (%w[Sharon Leo Leila Brian Arun].my_select { |friend| friend != 'Brian
 puts NEW_ARR
 
 puts '4.--------my_all--------'
-puts(%w[Sharon Leo Leila Brian Arun].my_all? { |word| word.length >= 3 })
-puts(%w[Sharon Leo Leila Brian Arun].all? { |word| word.length >= 3 })
+puts((1..3).all?(&proc{|x| x%2==0}) == (1..3).my_all?(&proc{|x| x%2==0}))
+puts([true,[true],false].all? == [true,[true],false].my_all?)
+puts([1,2,3].all?(Integer) == [1,2,3].my_all?(Integer))
+puts [1,-2,3.4].all?(Numeric) == [1,-2,3.4].my_all?(Numeric)
+puts(['word',1,2,3].all?(Integer) == ['word',1,2,3].my_all?(Integer))
 
 puts '5.--------my_any--------'
-puts(%w[Sharon Leo Leila Brian Arun].my_any? { |word| word.length >= 3 })
-puts(%w[Sharon Leo Leila Brian Arun].any? { |word| word.length >= 4 })
+puts([1,2,3].any?(&proc{|x| x%2==0}) == [1,2,3].my_any?(&proc{|x| x%2==0}))
+puts([1,2,3].any?(&proc{|x| x==0}) == [1,2,3].my_any?(&proc{|x| x==0}))
+puts((1..3).any?(&proc{|x| x==0}) == (1..3).my_any?(&proc{|x| x==0}))
+puts([false, 0].any? == [false, 0].my_any?)
+puts([1.1,'',[]].any?(Numeric) == [1.1,'',[]].my_any?(Numeric))
+puts([1,'',[]].any?(Numeric) == [1,'',[]].my_any?(Integer))
+puts(['dog', 'cat'].any?(/d/) == ['dog', 'cat'].my_any?(/d/))
+puts(['dog', 'cat'].any?(/z/) == ['dog', 'cat'].my_any?(/z/))
+puts(['dog','car'].any?('cat') == ['dog','car'].my_any?('cat'))
+puts(['cat', 'dog','car'].any?('cat') == ['cat', 'dog','car'].my_any?('cat'))
 
 puts '6.--------my_none?--------'
 puts(%w[ant bear cat].my_none? { |word| word.length == 5 })
