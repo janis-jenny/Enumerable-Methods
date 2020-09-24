@@ -48,9 +48,15 @@ puts(['dog','car'].any?('cat') == ['dog','car'].my_any?('cat'))
 puts(['cat', 'dog','car'].any?('cat') == ['cat', 'dog','car'].my_any?('cat'))
 
 puts '6.--------my_none?--------'
-puts(%w[ant bear cat].my_none? { |word| word.length == 5 })
-puts(%w[ant bear cat].none? { |word| word.length == 5 })
-
+puts((1..3).none?(&proc{|num| num%2==0}) == (1..3).my_none?(&proc{|num| num%2==0}))
+puts([false, nil,[]].none? == [false, nil,[]].my_none?)
+puts([true,[]].none?(String) == [true,[]].my_none?(String))
+puts([true,[]].none?(Numeric) == [true,[]].my_none?(Numeric))
+puts(['',[]].none?(String) == ['',[]].my_none?(String))
+puts(['dog','cat'].none?(/x/) == ['dog','cat'].my_none?(/x/))
+puts(['dog', 'cat'].none?(/d/) == ['dog', 'cat'].my_none?(/d/))
+puts(['dog','car'].none?(5) == ['dog','car'].my_none?(5))
+puts([5,'dog','car'].none?(5) == [5,'dog','car'].my_none?(5))
 puts '7.--------my_count--------'
 arr = [1, 2, 4, 2]
 puts arr.my_count #=> 4

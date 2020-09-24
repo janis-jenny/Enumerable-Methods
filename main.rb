@@ -50,14 +50,14 @@ module Enumerable
       if block_given?
       return false if yield(self[index]) == false
       else
-        if argument === nil #when there is no argument 
+        if argument === nil #when there is no argument
           return false if self[index].nil? || self[index] == false
         elsif argument.class == Regexp #when there is an argument
           return false if self[index].match?(argument) != true
         elsif argument.class == Class
-          return false if self[index].is_a?(argument) != true  
+          return false if self[index].is_a?(argument) != true
         else #when the argument is no regexp ni class
-          return false if self[index] != argument 
+          return false if self[index] != argument
         end
       end
       index += 1
@@ -119,11 +119,12 @@ module Enumerable
     end
   end
 
-  def my_none?
+  def my_none?(arg = nil)
+    my = self.to_a
+    a = 0
     if block_given?
-      a = 0
-      while a < length
-        if yield(self[a]) == true
+      while a < my.length
+        if yield(my[a]) == true
           o = false
           break
         else
@@ -132,6 +133,40 @@ module Enumerable
         end
       end
       o
+    elsif arg == nil
+      while a < my.length
+        if my[a] == true
+          o = true
+          break
+        else
+          o = false
+        end
+        a += 1
+      end
+      o
+    elsif arg != nil && arg.class != Regexp && arg.class != Integer
+      o = true
+      while a < my.length
+        if (my[a].is_a? arg) == true
+          o = false
+          break
+        end
+        a += 1
+      end
+      o
+    elsif arg.class == Regexp
+      while a < my.length
+        if my[a].match(arg) != nil
+          o = false
+          break
+        else
+          o = true
+        end
+        a += 1
+      end
+      o
+    elsif arg.class != Regexp && arg != nil
+      puts 'aaa'
     else
       true
     end
