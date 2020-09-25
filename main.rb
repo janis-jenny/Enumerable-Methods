@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Lint/UselessAssignment, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
+# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse, Metrics/AbcSize
 
 module Enumerable
   # 1.my_each
@@ -46,7 +46,7 @@ module Enumerable
   # 4.my_all?
   def my_all?(argument = nil)
     index = 0
-    my = self.to_a
+    my = to_a
     while index < my.length
       if block_given?
         return false if yield(my[index]) == false
@@ -83,7 +83,7 @@ module Enumerable
     elsif arg.nil?
       o = true
       while a < my.length
-        if my[a] == nil
+        if my[a].nil?
           o = false
           break
         end
@@ -254,5 +254,5 @@ def multiply_els(arg)
   arg.my_inject { |sum, n| sum * n }
 end
 
-# rubocop:enable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Lint/UselessAssignment, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
+# rubocop:enable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse, Metrics/AbcSize
 # rubocop:enable

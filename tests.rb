@@ -37,7 +37,7 @@ puts("13. #{[5, 5, 5].all?(5) == [5, 5, 5].my_all?(5)}")
 puts("14. #{[5, [5], 5].all?(5) == [5, [5], 5].my_all?(5)}")
 range = Range.new(5, 50)
 HIGHEST_VALUE = range.max
-block = proc { |num| num > HIGHEST_VALUE } 
+block = proc { |num| num > HIGHEST_VALUE }
 puts range.my_all?(&block)
 
 puts '5.--------my_any--------'
@@ -52,9 +52,9 @@ puts(%w[dog cat].any?(/z/) == %w[dog cat].my_any?(/z/))
 puts(%w[dog car].any?('cat') == %w[dog car].my_any?('cat'))
 puts(%w[cat dog car].any?('cat') == %w[cat dog car].my_any?('cat'))
 array = [nil, false]
-puts(array.my_any? === array.any?)
+puts(array.my_any? == array.any?)
 words = %w[dog door rod blade]
-puts(words.my_any?(Integer) === words.any?(Integer))
+puts(words.my_any?(Integer) == words.any?(Integer))
 
 puts '6.--------my_none?--------'
 puts((1..3).none?(&proc { |num| num.even? }) == (1..3).my_none?(&proc { |num| num.even? }))
@@ -67,9 +67,9 @@ puts(%w[dog cat].none?(/d/) == %w[dog cat].my_none?(/d/))
 puts(%w[dog car].none?(5) == %w[dog car].my_none?(5))
 puts([5, 'dog', 'car'].none?(5) == [5, 'dog', 'car'].my_none?(5))
 array = [nil, false]
-puts(array.my_none? === array.none?)
+puts(array.my_none? == array.none?)
 array = [nil, false, true, []]
-puts(array.my_none? === array.none?)
+puts(array.my_none? == array.none?)
 
 puts '7.--------my_count--------'
 arr = [1, 2, 4, 2]
