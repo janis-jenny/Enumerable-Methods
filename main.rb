@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
+# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse, Metrics/AbcSize
 
 module Enumerable
   # 1.my
@@ -81,11 +81,13 @@ module Enumerable
       end
       o
     elsif arg.nil?
-      o = true
       while a < my.length
-        if my[a].nil?
-          o = false
+        p 'a'
+        if my[a] != false
+          o = true
           break
+        elsif my[a].nil?
+          o = true
         end
         a += 1
       end
@@ -122,6 +124,8 @@ module Enumerable
         a += 1
       end
       o
+    elsif arg.class == Array
+      p 'aaa'
     else
       true
     end
@@ -254,4 +258,4 @@ def multiply_els(arg)
   arg.my_inject { |sum, n| sum * n }
 end
 
-# rubocop:enable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
+# rubocop:enable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse, Metrics/AbcSize

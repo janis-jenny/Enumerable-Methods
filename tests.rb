@@ -44,7 +44,8 @@ puts '5.--------my_any--------'
 puts([1, 2, 3].any?(&proc { |x| x.even? }) == [1, 2, 3].my_any?(&proc { |x| x.even? }))
 puts([1, 2, 3].any?(&proc { |x| x.zero? }) == [1, 2, 3].my_any?(&proc { |x| x.zero? }))
 puts((1..3).any?(&proc { |x| x.zero? }) == (1..3).my_any?(&proc { |x| x.zero? }))
-puts([false, 0].any? == [false, 0].my_any?)
+puts([false, 0].any?)
+puts([false, 0].my_any?)
 puts([1.1, '', []].any?(Numeric) == [1.1, '', []].my_any?(Numeric))
 puts([1, '', []].any?(Integer) == [1, '', []].my_any?(Integer))
 puts(%w[dog cat].any?(/d/) == %w[dog cat].my_any?(/d/))
@@ -52,9 +53,12 @@ puts(%w[dog cat].any?(/z/) == %w[dog cat].my_any?(/z/))
 puts(%w[dog car].any?('cat') == %w[dog car].my_any?('cat'))
 puts(%w[cat dog car].any?('cat') == %w[cat dog car].my_any?('cat'))
 array = [nil, false]
-puts(array.my_any? == array.any?)
+puts(array.my_any?)
+puts(array.any?)
 words = %w[dog door rod blade]
 puts(words.my_any?(Integer) == words.any?(Integer))
+puts([nil, false, true, []].my_any?)
+puts([nil, false, true, []].any?)
 
 puts '6.--------my_none?--------'
 puts((1..3).none?(&proc { |num| num.even? }) == (1..3).my_none?(&proc { |num| num.even? }))
