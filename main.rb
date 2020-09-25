@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse, Metrics/AbcSize
+# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
 
 module Enumerable
   # 1.my_each
