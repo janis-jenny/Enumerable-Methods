@@ -71,7 +71,12 @@ puts (1..3).count == (1..3).my_count
 puts '8.--------my_inject--------'
 puts([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n })
 puts([1, 2, 3, 4, 5, 6, 7, 8, 9].inject { |sum, n| sum + n })
-puts([2, 4, 5].multiply_els)
+puts((1..3).inject(&proc{|total, num| total*num}) == (1..3).my_inject(&proc{|total, num| total*num}))
+puts((1..3).inject(4) { |prod, n| prod * n } == (1..3).my_inject(4) { |prod, n| prod * n })
+puts([1,2,3].inject(:+) == [1,2,3].my_inject(:+))
+puts((1..9).inject(:+) == (1..9).my_inject(:+))
+puts((1..3).inject(4, :*) == (1..3).my_inject(4, :*))
+puts(multiply_els([1,2,3]) == 6)
 
 puts '9.--------my_map--------'
 r = [1, 2, 3]
