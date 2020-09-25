@@ -193,14 +193,40 @@ module Enumerable
   end
 
   # 8.my_inject
-  def my_inject
-    sum = self[0]
+  def my_inject(arg = nil , arg1 = nil)
+    my = self.to_a
+    sum = my[0]
     a = 1
-    while a < length
-      sum = yield(sum, self[a])
-      a += 1
+    if arg == nil && arg1 == nil
+      while a < my.length
+        sum = yield(sum, my[a])
+        a += 1
+      end
+      sum
+    elsif arg.class == Integer && arg1 == nil
+      sum = yield(sum, arg)
+      while a < my.length
+        sum = yield(sum, my[a])
+        a += 1
+      end
+      sum
+    elsif arg.class == Symbol
+      arg2 = arg.to_s
+      while a < my.length
+        sum = (sum.method(arg2).(my[a]))
+        a += 1
+      end
+      sum
+    elsif arg.class == Integer && arg1.class == Symbol
+      arg2 = arg1.to_s
+      sum = (sum.method(arg2).(arg))
+      while a < my.length
+        sum = (sum.method(arg2).(my[a]))
+        a += 1
+      end
+      sum
     end
-    sum
+
   end
 
   def multiply_els
