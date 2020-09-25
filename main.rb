@@ -142,11 +142,10 @@ module Enumerable
       o
     elsif arg.nil?
       while a < my.length
-        if my[a] == true
-          o = true
-          break
-        else
+        o = true
+        if my[a] == true || my[a] == []
           o = false
+          break
         end
         a += 1
       end
