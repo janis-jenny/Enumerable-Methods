@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/ModuleLength, Style/GuardClause
+# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Lint/UselessAssignment, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
 
 module Enumerable
   # 1.my_each
@@ -48,15 +48,15 @@ module Enumerable
     index = 0
     while index < length
       if block_given?
-      return false if yield(self[index]) == false
+        return false if yield(self[index]) == false
       else
-        if argument === nil #when there is no argument
+        if argument.nil? # when there is no argument
           return false if self[index].nil? || self[index] == false
-        elsif argument.class == Regexp #when there is an argument
+        elsif argument.class == Regexp # when there is an argument
           return false if self[index].match?(argument) != true
         elsif argument.class == Class
           return false if self[index].is_a?(argument) != true
-        else #when the argument is no regexp ni class
+        else # when the argument is no regexp ni class
           return false if self[index] != argument
         end
       end
@@ -69,7 +69,7 @@ module Enumerable
   def my_any?(arg = nil)
     a = 0
     o = false
-    my = self.to_a
+    my = to_a
     if block_given?
       while a < my.length
         if yield(my[a]) == true
@@ -79,9 +79,9 @@ module Enumerable
         a += 1
       end
       o
-    elsif arg == nil
+    elsif arg.nil?
       o = true
-      elsif block_given? == true && arg != nil
+    elsif block_given? == true && !arg.nil?
       o = false
       while a < my.length
         if (my[a].is_a? arg) == true
@@ -93,7 +93,7 @@ module Enumerable
       o
     elsif arg.class == Regexp
       while a < my.length
-        if (my[a].match(arg) != nil)
+        if !my[a].match(arg).nil?
           o = true
           break
         else
@@ -119,7 +119,7 @@ module Enumerable
   end
 
   def my_none?(arg = nil)
-    my = self.to_a
+    my = to_a
     a = 0
     if block_given?
       while a < my.length
@@ -132,7 +132,7 @@ module Enumerable
         end
       end
       o
-    elsif arg == nil
+    elsif arg.nil?
       while a < my.length
         if my[a] == true
           o = true
@@ -143,7 +143,7 @@ module Enumerable
         a += 1
       end
       o
-    elsif arg != nil && arg.class != Regexp && arg.class != Integer
+    elsif !arg.nil? && arg.class != Regexp && arg.class != Integer
       o = true
       while a < my.length
         if (my[a].is_a? arg) == true
@@ -155,7 +155,7 @@ module Enumerable
       o
     elsif arg.class == Regexp
       while a < my.length
-        if my[a].match(arg) != nil
+        if !my[a].match(arg).nil?
           o = false
           break
         else
@@ -164,7 +164,7 @@ module Enumerable
         a += 1
       end
       o
-    elsif arg.class != Regexp && arg != nil
+    elsif arg.class != Regexp && !arg.nil?
       puts 'aaa'
     else
       true
@@ -200,30 +200,17 @@ module Enumerable
   end
 
   # 9.my_map
-  def my_map(argument=nil)
-    a = 0
-    arr1 = []
-    while a < to_a.length
-      sum = yield(to_a[a])
-      arr1[a] = sum
-      sum = 0
-      a += 1
-    end
-    arr1
-  end
+  def my_map(proc = nil)
+    return to_enum unless block_given? || proc
 
-  # 10.my_map_proc
-  def my_map_proc
-    if block_given? || proc
-      new_arr = []
-      if proc
-        my_each { |item| new_arr << proc.call(item) }
-      else
-        my_each { |item| new_arr << yield(item) }
-      end
-      new_arr
+    arr = []
+    if proc
+      my_each { |item| arr << proc.call(item) }
+    else
+      my_each { |item| arr << yield(item) }
     end
+    arr
   end
 end
 
-# rubocop:enable Metrics/ModuleLength, Style/GuardClause
+# rubocop:enable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Lint/UselessAssignment, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
