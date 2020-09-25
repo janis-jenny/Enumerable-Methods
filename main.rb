@@ -164,11 +164,7 @@ module Enumerable
         a += 1
       end
       o
-<<<<<<< HEAD
     elsif arg.class != Regexp && !arg.nil?
-      puts 'aaa'
-=======
-    elsif arg.class != Regexp && arg != nil
       o = true
       while a < my.length
         if my[a] == arg
@@ -178,7 +174,6 @@ module Enumerable
         a += 1
       end
       o
->>>>>>> e9d9d14fb5670a67438953ec2a20d3bf762846fc
     else
       true
     end
@@ -198,17 +193,17 @@ module Enumerable
   end
 
   # 8.my_inject
-  def my_inject(arg = nil , arg1 = nil)
-    my = self.to_a
+  def my_inject(arg = nil, arg1 = nil)
+    my = to_a
     sum = my[0]
     a = 1
-    if arg == nil && arg1 == nil
+    if arg.nil? && arg1.nil?
       while a < my.length
         sum = yield(sum, my[a])
         a += 1
       end
       sum
-    elsif arg.class == Integer && arg1 == nil
+    elsif arg.class == Integer && arg1.nil?
       sum = yield(sum, arg)
       while a < my.length
         sum = yield(sum, my[a])
@@ -218,20 +213,19 @@ module Enumerable
     elsif arg.class == Symbol
       arg2 = arg.to_s
       while a < my.length
-        sum = (sum.method(arg2).(my[a]))
+        sum = sum.method(arg2).call(my[a])
         a += 1
       end
       sum
     elsif arg.class == Integer && arg1.class == Symbol
       arg2 = arg1.to_s
-      sum = (sum.method(arg2).(arg))
+      sum = sum.method(arg2).call(arg)
       while a < my.length
-        sum = (sum.method(arg2).(my[a]))
+        sum = sum.method(arg2).call(my[a])
         a += 1
       end
       sum
     end
-
   end
 
   # 9.my_map
@@ -248,12 +242,9 @@ module Enumerable
   end
 end
 
-<<<<<<< HEAD
-# rubocop:enable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Lint/UselessAssignment, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
-=======
 def multiply_els(arg)
   arg.my_inject { |sum, n| sum * n }
 end
 
-# rubocop:enable Metrics/ModuleLength, Style/GuardClause
->>>>>>> e9d9d14fb5670a67438953ec2a20d3bf762846fc
+# rubocop:enable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Lint/UselessAssignment, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
+# rubocop:enable

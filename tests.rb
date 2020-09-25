@@ -71,12 +71,12 @@ puts (1..3).count == (1..3).my_count
 puts '8.--------my_inject--------'
 puts([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n })
 puts([1, 2, 3, 4, 5, 6, 7, 8, 9].inject { |sum, n| sum + n })
-puts((1..3).inject(&proc{|total, num| total*num}) == (1..3).my_inject(&proc{|total, num| total*num}))
+puts((1..3).inject(&proc { |total, num| total * num }) == (1..3).my_inject(&proc { |total, num| total * num }))
 puts((1..3).inject(4) { |prod, n| prod * n } == (1..3).my_inject(4) { |prod, n| prod * n })
-puts([1,2,3].inject(:+) == [1,2,3].my_inject(:+))
+puts([1, 2, 3].inject(:+) == [1, 2, 3].my_inject(:+))
 puts((1..9).inject(:+) == (1..9).my_inject(:+))
 puts((1..3).inject(4, :*) == (1..3).my_inject(4, :*))
-puts(multiply_els([1,2,3]) == 6)
+puts(multiply_els([1, 2, 3]) == 6)
 
 puts '9.--------my_map--------'
 r = [1, 2, 3]
@@ -86,9 +86,9 @@ print(r.my_map { |i| i * i })
 print "\n"
 print([1, 2, 7, 4, 5].my_map { |x| x * x })
 print "\n"
-puts [1, 2, 3].my_map(proc { |x| x % 2}) { |a| a * 2 } == [1, 2, 3].my_map(proc { |x| x % 2})
-puts (1..3).map(&proc { |num| num + 1}) == (1..3).my_map(&proc { |num| num + 1})
+puts [1, 2, 3].my_map(proc { |x| x % 2 }) { |a| a * 2 } == [1, 2, 3].my_map(proc { |x| x % 2 })
+puts (1..3).map(&proc { |num| num + 1 }) == (1..3).my_map(&proc { |num| num + 1 })
 puts [1, 2, 3].map.class == [1, 2, 3].my_map.class
-puts [1, 2, 3].my_map(proc { |x| x % 2}) { |a| a * 2} == [1, 2, 3].my_map(proc { |x| x % 2})
+puts [1, 2, 3].my_map(proc { |x| x % 2 }) { |a| a * 2 } == [1, 2, 3].my_map(proc { |x| x % 2 })
 
 # rubocop:enable Layout/LineLength
