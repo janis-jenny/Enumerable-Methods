@@ -229,10 +229,6 @@ module Enumerable
 
   end
 
-  def multiply_els
-    my_inject { |sum, n| sum * n }
-  end
-
   # 9.my_map
   def my_map(argument=nil)
     a = 0
@@ -258,6 +254,10 @@ module Enumerable
       new_arr
     end
   end
+end
+
+def multiply_els(arg)
+  arg.my_inject { |sum, n| sum * n }
 end
 
 # rubocop:enable Metrics/ModuleLength, Style/GuardClause
