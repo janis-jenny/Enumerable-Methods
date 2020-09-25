@@ -46,18 +46,19 @@ module Enumerable
   # 4.my_all?
   def my_all?(argument = nil)
     index = 0
-    while index < length
+    my = self.to_a
+    while index < my.length
       if block_given?
-        return false if yield(self[index]) == false
+        return false if yield(my[index]) == false
       else
         if argument.nil? # when there is no argument
-          return false if self[index].nil? || self[index] == false
+          return false if my[index].nil? || my[index] == false
         elsif argument.class == Regexp # when there is an argument
-          return false if self[index].match?(argument) != true
+          return false if my[index].match?(argument) != true
         elsif argument.class == Class
-          return false if self[index].is_a?(argument) != true
+          return false if my[index].is_a?(argument) != true
         else # when the argument is no regexp ni class
-          return false if self[index] != argument
+          return false if my[index] != argument
         end
       end
       index += 1

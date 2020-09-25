@@ -35,6 +35,10 @@ puts("11. #{%w[cat cat].my_all?(/t/) == %w[cat cat].all?(/t/)}")
 puts("12. #{%w[cat cat].my_all?(/a/) == %w[cat cat].all?(/a/)}")
 puts("13. #{[5, 5, 5].all?(5) == [5, 5, 5].my_all?(5)}")
 puts("14. #{[5, [5], 5].all?(5) == [5, [5], 5].my_all?(5)}")
+range = Range.new(5, 50)
+HIGHEST_VALUE = range.max
+block = proc { |num| num > HIGHEST_VALUE } 
+puts range.my_all?(&block)
 
 puts '5.--------my_any--------'
 puts([1, 2, 3].any?(&proc { |x| x.even? }) == [1, 2, 3].my_any?(&proc { |x| x.even? }))
