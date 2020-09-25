@@ -1,7 +1,7 @@
 # rubocop:disable Metrics/ModuleLength, Metrics/MethodLength, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/BlockNesting, Style/IfInsideElse
 
 module Enumerable
-  # 1.my_each
+  # 1.my
   def my_each
     # return to_enum(:my_each) unless block_given?
     if block_given?
