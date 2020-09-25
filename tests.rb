@@ -66,7 +66,7 @@ puts arr.my_count(2) #=> 2
 puts arr.my_count(2) { |x| (x % 2).zero? } #=> 3
 puts [nil, nil, nil, 2, 4].count(nil)
 puts [nil, nil, nil, 2, 4].my_count(nil)
-puts (1..3).count == (1..3).my_count
+puts((1..3).count == (1..3).my_count)
 
 puts '8.--------my_inject--------'
 puts([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n })
@@ -87,7 +87,7 @@ print "\n"
 print([1, 2, 7, 4, 5].my_map { |x| x * x })
 print "\n"
 puts [1, 2, 3].my_map(proc { |x| x % 2 }) { |a| a * 2 } == [1, 2, 3].my_map(proc { |x| x % 2 })
-puts (1..3).map(&proc { |num| num + 1 }) == (1..3).my_map(&proc { |num| num + 1 })
+puts((1..3).map(&proc { |num| num + 1 }) == (1..3).my_map(&proc { |num| num + 1 }))
 puts [1, 2, 3].map.class == [1, 2, 3].my_map.class
 puts [1, 2, 3].my_map(proc { |x| x % 2 }) { |a| a * 2 } == [1, 2, 3].my_map(proc { |x| x % 2 })
 
