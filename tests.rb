@@ -57,6 +57,7 @@ puts(['dog','cat'].none?(/x/) == ['dog','cat'].my_none?(/x/))
 puts(['dog', 'cat'].none?(/d/) == ['dog', 'cat'].my_none?(/d/))
 puts(['dog','car'].none?(5) == ['dog','car'].my_none?(5))
 puts([5,'dog','car'].none?(5) == [5,'dog','car'].my_none?(5))
+
 puts '7.--------my_count--------'
 arr = [1, 2, 4, 2]
 puts arr.my_count #=> 4
@@ -64,6 +65,7 @@ puts arr.my_count(2) #=> 2
 puts arr.my_count(2) { |x| (x % 2).zero? } #=> 3
 puts [nil, nil, nil, 2, 4].count(nil)
 puts [nil, nil, nil, 2, 4].my_count(nil)
+puts (1..3).count == (1..3).my_count
 
 puts '8.--------my_inject--------'
 puts([1, 2, 3, 4, 5, 6, 7, 8, 9].my_inject { |sum, n| sum + n })
@@ -76,7 +78,10 @@ print(r.map { |i| i * i })
 print "\n"
 print(r.my_map { |i| i * i })
 print "\n"
+puts (1..3).map(&proc{|num| num+1}) == (1..3).my_map(&proc{|num| num+1})
+puts [1,2,3].map.class==[1,2,3].my_map.class
 
 puts '10.--------my_map_proc--------'
 print([1, 2, 7, 4, 5].my_map { |x| x * x })
 print "\n"
+puts [1,2,3].my_map(proc{|x|x%2}){|a|a*2} == [1,2,3].my_map(proc{|x|x%2})

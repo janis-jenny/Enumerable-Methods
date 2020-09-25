@@ -81,8 +81,7 @@ module Enumerable
       o
     elsif arg == nil
       o = true
-      o
-    elsif block_given? == true && arg != nil
+      elsif block_given? == true && arg != nil
       o = false
       while a < my.length
         if (my[a].is_a? arg) == true
@@ -201,11 +200,11 @@ module Enumerable
   end
 
   # 9.my_map
-  def my_map
+  def my_map(argument=nil)
     a = 0
     arr1 = []
-    while a < length
-      sum = yield(self[a])
+    while a < to_a.length
+      sum = yield(to_a[a])
       arr1[a] = sum
       sum = 0
       a += 1
