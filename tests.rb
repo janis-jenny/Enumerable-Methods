@@ -66,6 +66,10 @@ puts(%w[dog cat].none?(/x/) == %w[dog cat].my_none?(/x/))
 puts(%w[dog cat].none?(/d/) == %w[dog cat].my_none?(/d/))
 puts(%w[dog car].none?(5) == %w[dog car].my_none?(5))
 puts([5, 'dog', 'car'].none?(5) == [5, 'dog', 'car'].my_none?(5))
+array = [nil, false]
+puts(array.my_none? === array.none?)
+array = [nil, false, true, []]
+puts(array.my_none? === array.none?)
 
 puts '7.--------my_count--------'
 arr = [1, 2, 4, 2]
