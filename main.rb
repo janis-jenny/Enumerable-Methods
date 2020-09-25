@@ -81,7 +81,15 @@ module Enumerable
       o
     elsif arg.nil?
       o = true
-    elsif block_given? == true && !arg.nil?
+      while a < my.length
+        if my[a] == nil
+          o = false
+          break
+        end
+        a += 1
+      end
+      o
+    elsif !arg.nil? && arg.class == Class
       o = false
       while a < my.length
         if (my[a].is_a? arg) == true
