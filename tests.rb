@@ -78,10 +78,7 @@ print(r.map { |i| i * i })
 print "\n"
 print(r.my_map { |i| i * i })
 print "\n"
-puts (1..3).map(&proc{|num| num+1}) == (1..3).my_map(&proc{|num| num+1})
-puts [1,2,3].map.class==[1,2,3].my_map.class
 
 puts '10.--------my_map_proc--------'
 print([1, 2, 7, 4, 5].my_map { |x| x * x })
 print "\n"
-puts [1,2,3].my_map(proc{|x|x%2}){|a|a*2} == [1,2,3].my_map(proc{|x|x%2})

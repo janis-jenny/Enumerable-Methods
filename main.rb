@@ -165,7 +165,15 @@ module Enumerable
       end
       o
     elsif arg.class != Regexp && arg != nil
-      puts 'aaa'
+      o = true
+      while a < my.length
+        if my[a] == arg
+          o = false
+          break
+        end
+        a += 1
+      end
+      o
     else
       true
     end
