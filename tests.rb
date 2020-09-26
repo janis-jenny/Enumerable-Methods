@@ -58,6 +58,8 @@ words = %w[dog door rod blade]
 puts(words.my_any?(Integer) == words.any?(Integer))
 puts([nil, false, true, []].my_any?)
 puts([nil, false, true, []].any?)
+puts([nil, false, nil, false].my_any?)
+puts([nil, false, nil, false].any?)
 
 puts '6.--------my_none?--------'
 puts((1..3).none?(&proc { |num| num.even? }) == (1..3).my_none?(&proc { |num| num.even? }))
