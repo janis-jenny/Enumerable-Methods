@@ -82,12 +82,11 @@ module Enumerable
       o
     elsif arg.nil?
       while a < my.length
-        p 'a'
-        if my[a] != false
+        if my[a] != false && my[a] != nil
           o = true
           break
         elsif my[a].nil?
-          o = true
+          o = false
         end
         a += 1
       end

@@ -53,8 +53,7 @@ puts(%w[dog cat].any?(/z/) == %w[dog cat].my_any?(/z/))
 puts(%w[dog car].any?('cat') == %w[dog car].my_any?('cat'))
 puts(%w[cat dog car].any?('cat') == %w[cat dog car].my_any?('cat'))
 array = [nil, false]
-puts(array.my_any?)
-puts(array.any?)
+puts(array.my_any? == array.any?)
 words = %w[dog door rod blade]
 puts(words.my_any?(Integer) == words.any?(Integer))
 puts([nil, false, true, []].my_any?)
